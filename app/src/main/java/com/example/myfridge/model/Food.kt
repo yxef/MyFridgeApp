@@ -1,4 +1,3 @@
 package com.example.myfridge.model
 
-class Food {
-}
+data class Food(val name: String, val date: String, val iconId: Int)
