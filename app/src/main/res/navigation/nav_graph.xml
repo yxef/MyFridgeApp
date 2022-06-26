@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.myfridge.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_fridgeChoiceFragment"
+            app:destination="@id/fridgeChoiceFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_contactFragment"
+            app:destination="@id/contactFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_addFridgeFragment"
+            app:destination="@id/addFridgeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/foodListFragment"
+        android:name="com.example.myfridge.FoodListFragment"
+        android:label="fragment_food_list"
+        tools:layout="@layout/fragment_food_list" >
+        <action
+            android:id="@+id/action_foodListFragment_to_placeholderFridgeShare"
+            app:destination="@id/placeholderFridgeShare" />
+        <action
+            android:id="@+id/action_foodListFragment_to_modifyFoodFragment"
+            app:destination="@id/modifyFoodFragment" />
+    </fragment>
+    <fragment android:id="@+id/placeholderFridgeShare" />
+    <fragment
+        android:id="@+id/fridgeChoiceFragment"
+        android:name="com.example.myfridge.fridgeChoiceFragment"
+        android:label="fragment_fridge_choice"
+        tools:layout="@layout/fragment_fridge_choice" >
+        <action
+            android:id="@+id/action_fridgeChoiceFragment_to_foodListFragment"
+            app:destination="@id/foodListFragment" />
+        <action
+            android:id="@+id/action_fridgeChoiceFragment_to_addFridgeFragment"
+            app:destination="@id/addFridgeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/modifyFoodFragment"
+        android:name="com.example.myfridge.modifyFoodFragment"
+        android:label="fragment_modify_food"
+        tools:layout="@layout/fragment_modify_food" />
+    <fragment
+        android:id="@+id/contactFragment"
+        android:name="com.example.myfridge.contactFragment"
+        android:label="fragment_contact"
+        tools:layout="@layout/fragment_contact" />
+    <fragment
+        android:id="@+id/addFridgeFragment"
+        android:name="com.example.myfridge.addFridgeFragment"
+        android:label="fragment_add_fridge"
+        tools:layout="@layout/fragment_add_fridge" >
+        <action
+            android:id="@+id/action_addFridgeFragment_to_fridgeChoiceFragment"
+            app:destination="@id/fridgeChoiceFragment" />
+    </fragment>
+</navigation>
