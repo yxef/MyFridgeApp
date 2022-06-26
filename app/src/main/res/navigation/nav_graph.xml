@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/foodListFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -26,13 +26,12 @@
         android:label="fragment_food_list"
         tools:layout="@layout/fragment_food_list" >
         <action
-            android:id="@+id/action_foodListFragment_to_placeholderFridgeShare"
-            app:destination="@id/placeholderFridgeShare" />
-        <action
             android:id="@+id/action_foodListFragment_to_modifyFoodFragment"
             app:destination="@id/modifyFoodFragment" />
+        <action
+            android:id="@+id/action_foodListFragment_to_shareFridgeFragment"
+            app:destination="@id/shareFridgeFragment" />
     </fragment>
-    <fragment android:id="@+id/placeholderFridgeShare" />
     <fragment
         android:id="@+id/fridgeChoiceFragment"
         android:name="com.example.myfridge.fridgeChoiceFragment"
@@ -64,4 +63,9 @@
             android:id="@+id/action_addFridgeFragment_to_fridgeChoiceFragment"
             app:destination="@id/fridgeChoiceFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/shareFridgeFragment"
+        android:name="com.example.myfridge.shareFridgeFragment"
+        android:label="fragment_share_fridge"
+        tools:layout="@layout/fragment_share_fridge" />
 </navigation>

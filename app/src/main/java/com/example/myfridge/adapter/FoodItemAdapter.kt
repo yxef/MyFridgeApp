@@ -1,14 +1,15 @@
 package com.example.myfridge.adapter
 
 import android.content.Context
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myfridge.FoodListFragmentDirections
 import com.example.myfridge.R
+import com.example.myfridge.data.TestDataset
 import com.example.myfridge.model.Food
 
 
@@ -17,6 +18,7 @@ class FoodItemAdapter(
     private val context: Context,
     private val dataset: List<Food>
 ) : RecyclerView.Adapter<FoodItemAdapter.FoodItemViewHolder>() {
+
 
     class FoodItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         val textViewFoodName: TextView = view.findViewById(R.id.food_name)
