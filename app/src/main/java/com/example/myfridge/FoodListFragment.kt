@@ -1,30 +1,17 @@
 package com.example.myfridge
 
-import android.content.Context
 import android.os.Bundle
 import android.view.*
-import android.widget.Button
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myfridge.adapter.FoodItemAdapter
 import com.example.myfridge.data.TestDataset
 import com.example.myfridge.databinding.FragmentFoodListBinding
 
-/**
- * A simple [Fragment] subclass.
- * Use the [FoodListFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-
-
 class FoodListFragment : Fragment() {
 
-    private var _mainContext : Context? = null
-    private val mainContext get() = _mainContext!!
-
-    val action = FoodListFragmentDirections.actionFoodListFragmentToModifyFoodFragment()
+    private val action = FoodListFragmentDirections.actionFoodListFragmentToModifyFoodFragment()
 
     // null perché non possiamo inflazionare il layout fino a quando non viene chiamata
     // onCreateView()
@@ -38,7 +25,7 @@ class FoodListFragment : Fragment() {
     private val binding get() = _binding!!
 
     // Loads test dataset
-    val testDataset = TestDataset().loadTestFoodItems()
+    private val testDataset = TestDataset().loadTestFoodItems()
 
     private lateinit var recyclerView: RecyclerView
 
@@ -55,22 +42,13 @@ class FoodListFragment : Fragment() {
         return binding.root
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        _mainContext = context
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        _mainContext = null
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = binding.recyclerView
 
         // assegnamo l'adapter
-        recyclerView.adapter = FoodItemAdapter(mainContext, testDataset)
+        //recyclerView.adapter = FoodItemAdapter(mainContext, testDataset) (versione con contesto)
+        recyclerView.adapter = FoodItemAdapter(testDataset)
 
         binding.buttonTest.setOnClickListener{
             binding.buttonTest.findNavController().navigate(action)

@@ -7,20 +7,18 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myfridge.FoodListFragmentDirections
 import com.example.myfridge.R
-import com.example.myfridge.data.TestDataset
 import com.example.myfridge.model.Food
 
 
 // Adapter che mostra [Food] data objects
 class FoodItemAdapter(
-    private val context: Context,
+    /*private val context: Context,*/
     private val dataset: List<Food>
 ) : RecyclerView.Adapter<FoodItemAdapter.FoodItemViewHolder>() {
 
 
-    class FoodItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+    class FoodItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textViewFoodName: TextView = view.findViewById(R.id.food_name)
         val textViewExpirationDate: TextView = view.findViewById(R.id.food_expiration_date)
         val imageViewIconImageView : ImageView = view.findViewById(R.id.food_icon)
