@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import com.example.myfridge.adapter.FoodItemAdapter
-import com.example.myfridge.data.TestDataset
 import com.example.myfridge.databinding.ActivityMainBinding
 
 private lateinit var binding: ActivityMainBinding

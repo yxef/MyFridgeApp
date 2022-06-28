@@ -3,4 +3,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add_food">Add Food</string>
+    <string name="welcome">Welcome to MyFridge App</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="to_fridge_choice">To Fridge Choice</string>
+    <string name="send_email_request">Send us an Email</string>
+    <string name="review_request">Leave us a review!</string>
 </resources>
