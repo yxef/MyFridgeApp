@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.myfridge.databinding.FragmentContactBinding
-import kotlin.random.Random
 
 class ContactFragment : Fragment() {
 
@@ -25,11 +24,13 @@ class ContactFragment : Fragment() {
         "jp.konami.masterduel"
     )
 
-    private val intentMail = Intent(Intent.ACTION_SEND)
-        .setType("text/plain")
-        .putExtra(Intent.EXTRA_EMAIL, "contact@federicogalli.ovh"   )
-        .putExtra(Intent.EXTRA_SUBJECT, "MyFridge Contact Support")
-        .putExtra(Intent.EXTRA_TEXT, "I NEED HEEEEEELP")
+    private val emailAddress : String = "contact@federicogalli.ovh"
+
+    private val intentMail = Intent(Intent.ACTION_SENDTO).apply {
+        data = Uri.parse("mailto:".plus(emailAddress))
+        putExtra(Intent.EXTRA_SUBJECT, "Contact Support")
+        putExtra(Intent.EXTRA_TEXT, "I NEED EEEEEELP")
+    }
 
     private val intentStore = Intent(Intent.ACTION_VIEW,
         Uri.parse("market://details?id=".plus(
