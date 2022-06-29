@@ -14,6 +14,7 @@ class HomeFragment : Fragment() {
 
     private val actionToContact = HomeFragmentDirections.actionHomeFragmentToContactFragment()
     private val actionToFridgeChoice = HomeFragmentDirections.actionHomeFragmentToFridgeChoiceFragment()
+    private val actionToAddFridge = HomeFragmentDirections.actionHomeFragmentToAddFridgeFragment()
 
 
     override fun onCreateView(
@@ -34,6 +35,10 @@ class HomeFragment : Fragment() {
 
         binding.buttonToFridgeChoice.setOnClickListener{
             binding.buttonToFridgeChoice.findNavController().navigate(actionToFridgeChoice)
+        }
+
+        binding.buttonToAddFridge.setOnClickListener{
+            binding.buttonToAddFridge.findNavController().navigate(actionToAddFridge)
         }
     }
 }

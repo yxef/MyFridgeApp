@@ -8,10 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.myfridge.databinding.FragmentContactBinding
+import kotlin.random.Random
 
 class ContactFragment : Fragment() {
 
-    private var _binding : FragmentContactBinding? = null
+    private var _binding: FragmentContactBinding? = null
     private val binding get() = _binding!!
 
     private val randomUris: List<String> = listOf(
@@ -24,7 +25,7 @@ class ContactFragment : Fragment() {
         "jp.konami.masterduel"
     )
 
-    private val emailAddress : String = "contact@federicogalli.ovh"
+    private val emailAddress: String = "contact@federicogalli.ovh"
     private val intentMail = Intent(Intent.ACTION_SENDTO).apply {
         data = Uri.parse("mailto:".plus(emailAddress))
         putExtra(Intent.EXTRA_SUBJECT, "Contact Support")
@@ -33,9 +34,12 @@ class ContactFragment : Fragment() {
 
     // Intent to open an app page on the Google Play Store specifically
     // It won't be found on other app stores
-    private val intentStore = Intent(Intent.ACTION_VIEW,
-        Uri.parse("market://details?id=".plus(
-            randomUris[(randomUris.indices).random()])
+    private val intentStore = Intent(
+        Intent.ACTION_VIEW,
+        Uri.parse(
+            "market://details?id=".plus(
+                randomUris[Random(System.currentTimeMillis()).nextInt(0, randomUris.size-1)]
+            )
         )
     )
 
@@ -50,11 +54,11 @@ class ContactFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.buttonToMail.setOnClickListener{
+        binding.buttonToMail.setOnClickListener {
             startActivity(intentMail)
         }
 
-        binding.buttonStoreReview.setOnClickListener{
+        binding.buttonStoreReview.setOnClickListener {
             startActivity(intentStore)
         }
     }
