@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/fridgeChoiceFragment"
-        android:name="com.example.myfridge.fridgeChoiceFragment"
+        android:name="com.example.myfridge.FridgeChoiceFragment"
         android:label="fragment_fridge_choice"
         tools:layout="@layout/fragment_fridge_choice" >
         <action

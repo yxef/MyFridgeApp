@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:backgroundTint="?attr/colorPrimary"
-        android:text="@string/add_food"
+        android:text="@string/back_to_food_list"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

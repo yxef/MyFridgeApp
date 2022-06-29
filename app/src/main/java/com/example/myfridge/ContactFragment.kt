@@ -25,13 +25,14 @@ class ContactFragment : Fragment() {
     )
 
     private val emailAddress : String = "contact@federicogalli.ovh"
-
     private val intentMail = Intent(Intent.ACTION_SENDTO).apply {
         data = Uri.parse("mailto:".plus(emailAddress))
         putExtra(Intent.EXTRA_SUBJECT, "Contact Support")
         putExtra(Intent.EXTRA_TEXT, "I NEED EEEEEELP")
     }
 
+    // Intent to open an app page on the Google Play Store specifically
+    // It won't be found on other app stores
     private val intentStore = Intent(Intent.ACTION_VIEW,
         Uri.parse("market://details?id=".plus(
             randomUris[(randomUris.indices).random()])

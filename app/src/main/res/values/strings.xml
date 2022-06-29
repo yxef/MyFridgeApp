@@ -8,4 +8,7 @@
     <string name="to_fridge_choice">To Fridge Choice</string>
     <string name="send_email_request">Send us an Email</string>
     <string name="review_request">Leave us a review!</string>
+    <string name="to_food_list">To Food List</string>
+    <string name="back_to_food_list">back to food list</string>
+    <string name="to_add_fridge">to add fridge</string>
 </resources>
