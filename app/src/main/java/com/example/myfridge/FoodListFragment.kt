@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myfridge.adapter.FoodItemAdapter
-import com.example.myfridge.data.FoodDataset
 import com.example.myfridge.databinding.FragmentFoodListBinding
 
 class FoodListFragment : Fragment() {
@@ -25,7 +24,7 @@ class FoodListFragment : Fragment() {
     private val binding get() = _binding!!
 
     // Loads test dataset
-    private var foodDataset = FoodDataset().loadTestFoodItems()
+    //private var foodDataset = FoodDataset().loadTestFoodItems()
 
     private lateinit var recyclerView: RecyclerView
 
@@ -40,11 +39,11 @@ class FoodListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        recyclerView = binding.recyclerView
+        //recyclerView = binding.recyclerView
 
         // assegnamo l'adapter
         //recyclerView.adapter = FoodItemAdapter(mainContext, testDataset) (versione con contesto)
-        recyclerView.adapter = FoodItemAdapter(foodDataset)
+        //recyclerView.adapter = FoodItemAdapter(foodDataset)
 
         binding.buttonTest.setOnClickListener{
             binding.buttonTest.findNavController().navigate(action)

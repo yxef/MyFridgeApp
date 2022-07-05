@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myfridge.R
-import com.example.myfridge.model.Food
+import com.example.myfridge.data.Food
 
 
 // Adapter che mostra [Food] data objects
@@ -31,10 +31,10 @@ class FoodItemAdapter(
     }
 
     override fun onBindViewHolder(holder: FoodItemViewHolder, position: Int) {
-        val item = dataset[position]
-        holder.textViewFoodName.text = item.name
-        holder.textViewExpirationDate.text = item.date
-        holder.imageViewIconImageView.contentDescription = item.iconId.toString() // da rifare, solo placeholder dove invece di cambiare la icona
+        //val item = dataset[position]
+        //holder.textViewFoodName.text = item.name
+        //holder.textViewExpirationDate.text = item.date
+        //holder.imageViewIconImageView.contentDescription = item.iconId.toString() // da rifare, solo placeholder dove invece di cambiare la icona
     }
 
     override fun getItemCount(): Int {
