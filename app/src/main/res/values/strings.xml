@@ -15,4 +15,5 @@
     <string name="fridge_name">Fridge Name</string>
     <string name="add_fridge">Add Fridge</string>
     <string name="add_food_button_content_description">Add Food Button</string>
+    <string name="add_a_new_fridge">Add a new Fridge</string>
 </resources>
