@@ -83,3 +83,6 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 # lint/reports/
+
+# Cartella per mettere file che non uso più ma voglio tenere per reference
+REMOVED/

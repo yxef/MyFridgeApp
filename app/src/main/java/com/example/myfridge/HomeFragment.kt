@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.myfridge.databinding.FragmentHomeBinding
+import android.provider.Settings.Secure
 
 class HomeFragment : Fragment() {
     private var _binding : FragmentHomeBinding? = null

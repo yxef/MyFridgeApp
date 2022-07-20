@@ -11,4 +11,8 @@
     <string name="to_food_list">To Food List</string>
     <string name="back_to_food_list">back to food list</string>
     <string name="to_add_fridge">to add fridge</string>
+    <string name="insert_fridge_name">Insert Fridge Name</string>
+    <string name="fridge_name">Fridge Name</string>
+    <string name="add_fridge">Add Fridge</string>
+    <string name="add_food_button_content_description">Add Food Button</string>
 </resources>

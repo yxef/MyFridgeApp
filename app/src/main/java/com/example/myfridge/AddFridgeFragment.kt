@@ -9,6 +9,8 @@ import com.example.myfridge.databinding.FragmentAddFridgeBinding
 
 class addFridgeFragment : Fragment() {
 
+    //TODO("Create addFridge ViewModel")
+
     private var _binding : FragmentAddFridgeBinding? = null
     private val binding get() = _binding!!
 
@@ -19,5 +21,17 @@ class addFridgeFragment : Fragment() {
     ): View {
         _binding = FragmentAddFridgeBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.addFridgeButton.setOnClickListener{
+            insertFridgeToDatabase()
+        }
+    }
+
+    private fun insertFridgeToDatabase() {
+        TODO("Not yet implemented")
     }
 }

@@ -7,13 +7,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myfridge.R
-import com.example.myfridge.data.Food
 
 
 // Adapter che mostra [Food] data objects
 class FoodItemAdapter(
     /*private val context: Context,*/
-    private val dataset: List<Food>
+    /*private val dataset: List<Food> NON USO PIU' FOOD DAL DATABASE, DEVO RIFARE IL DATO*/
 ) : RecyclerView.Adapter<FoodItemAdapter.FoodItemViewHolder>() {
 
 
@@ -31,13 +30,13 @@ class FoodItemAdapter(
     }
 
     override fun onBindViewHolder(holder: FoodItemViewHolder, position: Int) {
-        //val item = dataset[position]
-        //holder.textViewFoodName.text = item.name
-        //holder.textViewExpirationDate.text = item.date
-        //holder.imageViewIconImageView.contentDescription = item.iconId.toString() // da rifare, solo placeholder dove invece di cambiare la icona
+        //holder.textViewFoodName.text = dataset[position].name
+        //holder.textViewExpirationDate.text = dataset[position].expiration_date
+        //holder.imageViewIconImageView.contentDescription = dataset[position].iconId.toString() // da rifare, solo placeholder dove invece di cambiare la icona
     }
 
     override fun getItemCount(): Int {
-        return dataset.size
+        TODO("non operiamo più su un database interno, il dataset viene preso tramite json dall'internet")
+        //return dataset.size
     }
 }

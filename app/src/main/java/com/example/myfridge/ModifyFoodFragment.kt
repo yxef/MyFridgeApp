@@ -5,11 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import com.example.myfridge.databinding.FragmentModifyFoodBinding
-import com.example.myfridge.viewmodels.FoodListViewModel
-import com.example.myfridge.viewmodels.FoodViewModelFactory
 
 
 class ModifyFoodFragment : Fragment() {
@@ -19,7 +16,7 @@ class ModifyFoodFragment : Fragment() {
 
     private val action = ModifyFoodFragmentDirections.actionModifyFoodFragmentToFoodListFragment()
 
-
+ 
 
     override fun onCreateView(
         inflater: LayoutInflater,

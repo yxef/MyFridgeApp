@@ -39,10 +39,10 @@ class FoodListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //recyclerView = binding.recyclerView
+        recyclerView = binding.recyclerView
 
         // assegnamo l'adapter
-        //recyclerView.adapter = FoodItemAdapter(mainContext, testDataset) (versione con contesto)
+        //recyclerView.adapter = FoodItemAdapter(mainContext, testDataset) // (versione con contesto)
         //recyclerView.adapter = FoodItemAdapter(foodDataset)
 
         binding.buttonTest.setOnClickListener{
