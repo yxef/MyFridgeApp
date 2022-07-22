@@ -31,6 +31,7 @@ class addFridgeFragment : Fragment() {
         }
     }
 
+    // Invece di inserire nel DB devo prendere le info dal database
     private fun insertFridgeToDatabase() {
         TODO("Not yet implemented")
     }

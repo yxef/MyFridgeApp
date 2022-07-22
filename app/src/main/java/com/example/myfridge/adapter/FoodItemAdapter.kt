@@ -7,12 +7,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myfridge.R
+import com.example.myfridge.data.Food
 
 
 // Adapter che mostra [Food] data objects
 class FoodItemAdapter(
     /*private val context: Context,*/
-    /*private val dataset: List<Food> NON USO PIU' FOOD DAL DATABASE, DEVO RIFARE IL DATO*/
+    val dataset: List<Food>
 ) : RecyclerView.Adapter<FoodItemAdapter.FoodItemViewHolder>() {
 
 
