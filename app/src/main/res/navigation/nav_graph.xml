@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/foodListFragment"
-        android:name="com.example.myfridge.FoodListFragment"
+        android:name="com.example.myfridge.foodlist.FoodListFragment"
         android:label="fragment_food_list"
         tools:layout="@layout/fragment_food_list" >
         <action

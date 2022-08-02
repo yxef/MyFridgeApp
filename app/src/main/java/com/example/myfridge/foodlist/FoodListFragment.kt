@@ -1,11 +1,13 @@
-package com.example.myfridge
+package com.example.myfridge.foodlist
 
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myfridge.adapter.FoodItemAdapter
 import com.example.myfridge.databinding.FragmentFoodListBinding
 
 class FoodListFragment : Fragment() {
@@ -14,7 +16,7 @@ class FoodListFragment : Fragment() {
 
     // null perché non possiamo inflazionare il layout fino a quando non viene chiamata
     // onCreateView()
-    private var _binding : FragmentFoodListBinding? = null
+    private var _binding: FragmentFoodListBinding? = null
 
     // proprietà che otterrà il valore di ritornato da _binding una volta che è inizializzato
     // marcato con !! indica una promessa al compilatore che accederò a questa
@@ -26,6 +28,9 @@ class FoodListFragment : Fragment() {
     // Loads test dataset
     //private var foodDataset = FoodDataset().loadTestFoodItems()
 
+    //private var foodListViewModel by viewModels<FoodListViewModel > { defaultViewModelProviderFactory() }
+    private var foodListViewModel: FoodListViewModel = FoodListViewModel()
+
     private lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(
@@ -33,7 +38,8 @@ class FoodListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentFoodListBinding.inflate(inflater, container, false)
+        _binding = FragmentFoodListBinding.inflate(inflater)
+
         return binding.root
     }
 
@@ -41,11 +47,20 @@ class FoodListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = binding.recyclerView
 
+        val foodObserver = Observer<String> {
+            recyclerView.adapter = FoodItemAdapter(foodListViewModel.foodList)
+        }
+
         // assegnamo l'adapter
         //recyclerView.adapter = FoodItemAdapter(mainContext, testDataset) // (versione con contesto)
-        //recyclerView.adapter = FoodItemAdapter(foodDataset)
+        foodListViewModel.status.observe(viewLifecycleOwner, foodObserver)
+        recyclerView.adapter = FoodItemAdapter(foodListViewModel.foodList)
 
-        binding.buttonTest.setOnClickListener{
+        // no idea su come non rendere le merde null nella recycler view
+        //foodListViewModel.status.observe(viewLifecycleOwner) { foodListViewModel.getFood(11) }
+
+
+        binding.buttonTest.setOnClickListener {
             binding.buttonTest.findNavController().navigate(action)
         }
     }
