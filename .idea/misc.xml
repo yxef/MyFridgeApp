@@ -3,10 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/RealD/AndroidStudioProjects/MyFridge/app/src/main/res/drawable/ic_canned_food.xml" value="0.2645" />
+        <entry key="..\:/Users/RealD/AndroidStudioProjects/MyFridge/app/src/main/res/drawable/ic_chicken_food.xml" value="0.272" />
+        <entry key="..\:/Users/RealD/AndroidStudioProjects/MyFridge/app/src/main/res/drawable/ic_fish_food.xml" value="0.272" />
+        <entry key="..\:/Users/RealD/AndroidStudioProjects/MyFridge/app/src/main/res/drawable/ic_jar_of_food.xml" value="0.349" />
         <entry key="..\:/Users/RealD/AndroidStudioProjects/MyFridge/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3465" />
         <entry key="..\:/Users/RealD/AndroidStudioProjects/MyFridge/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.17" />
         <entry key="..\:/Users/RealD/AndroidStudioProjects/MyFridge/app/src/main/res/drawable/ic_refrigerator_background.xml" value="0.2035" />
         <entry key="..\:/Users/RealD/AndroidStudioProjects/MyFridge/app/src/main/res/drawable/ic_refrigerator_svgrepo_com.xml" value="0.198" />
+        <entry key="..\:/Users/RealD/AndroidStudioProjects/MyFridge/app/src/main/res/drawable/ic_wine_food.xml" value="0.3515" />
         <entry key="..\:/Users/RealD/AndroidStudioProjects/MyFridge/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/RealD/AndroidStudioProjects/MyFridge/app/src/main/res/layout/food_item.xml" value="0.33" />
         <entry key="..\:/Users/RealD/AndroidStudioProjects/MyFridge/app/src/main/res/layout/fragment_add_fridge.xml" value="0.25" />
