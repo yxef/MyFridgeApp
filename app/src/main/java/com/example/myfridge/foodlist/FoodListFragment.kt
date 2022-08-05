@@ -47,13 +47,14 @@ class FoodListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = binding.recyclerView
 
+        // Creiamo un observer che quando attivato rilancia la funziona adapter e ricrea la lista
         val foodObserver = Observer<String> {
             recyclerView.adapter = FoodItemAdapter(foodListViewModel.foodList)
         }
-
-        // assegnamo l'adapter
-        //recyclerView.adapter = FoodItemAdapter(mainContext, testDataset) // (versione con contesto)
+        // Diciamo all'observer di controllare cambiamenti alla LiveData status in modo tale che una volta
+        // che il ViewModel aggiorna il dato, la recyclerView viene ricostruita
         foodListViewModel.status.observe(viewLifecycleOwner, foodObserver)
+
         recyclerView.adapter = FoodItemAdapter(foodListViewModel.foodList)
 
         // no idea su come non rendere le merde null nella recycler view

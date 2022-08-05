@@ -5,17 +5,19 @@
     android:id="@+id/item_title"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
+    android:layout_margin="6dp"
     android:background="@color/purple_200"
     >
 
     <ImageView
         android:id="@+id/food_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
         android:importantForAccessibility="no"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:srcCompat="@android:drawable/btn_star_big_on"
         tools:srcCompat="@tools:sample/avatars" />
 
@@ -23,6 +25,7 @@
         android:id="@+id/food_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
         app:layout_constraintStart_toEndOf="@id/food_icon"
         app:layout_constraintTop_toTopOf="@id/food_icon"
         tools:text="THIS IS A TEXT " />
@@ -32,6 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
+        android:layout_marginStart="12dp"
         app:layout_constraintStart_toEndOf="@id/food_icon"
         app:layout_constraintTop_toBottomOf="@id/food_name"
         tools:text="DD/MM/YYYY" />
