@@ -29,8 +29,8 @@ class ModifyFoodFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.buttonBack.setOnClickListener{
-            binding.buttonBack.findNavController().navigate(action)
+        binding.buttonConfirmChoice.setOnClickListener{
+            binding.buttonConfirmChoice.findNavController().navigate(action)
         }
     }
 }

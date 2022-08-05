@@ -66,24 +66,23 @@ class FoodItemAdapter(
      */
     override fun onBindViewHolder(holder: FoodItemViewHolder, position: Int) {
         Log.d("Dataset", "cum ${dataset.value}")
-            //holder.textViewFoodName.text = info.value
+        //holder.textViewFoodName.text = info.value
 
         Log.d("Dataset", "Id Drawables: ${iconDrawableId.toString()}")
 
         holder.textViewFoodName.text = dataset.value?.get(position)?.foodName ?: "Missing data"
+
         holder.textViewExpirationDate.text =
             dataset.value?.get(position)?.expirationDate ?: "Missing Data"
-        holder.imageViewIconImageView.contentDescription =
-            dataset.value?.get(position)?.iconId.toString()
 
-        //holder.imageViewIconImageView.setImageResource(R.drawable.ic_baby_food)
-        holder.imageViewIconImageView.setImageResource(iconDrawableId[dataset.value?.get(position)?.iconId ?: 0])
-            //dataset.value?.get(position)?.iconId ?: 2131165341
+        holder.imageViewIconImageView.setImageResource(
+            iconDrawableId[dataset.value?.get(position)?.iconId ?: 0]
+        )
 
     }
 
     override fun getItemCount(): Int {
-        //TODO("non operiamo più su un database interno, il dataset viene preso tramite json dall'internet")
+        // If our dataset has been initialized then we return size otherwise 0
         return dataset.value?.size ?: 0
     }
 }

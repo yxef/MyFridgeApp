@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="6dp"
-    android:background="@color/purple_200"
-    >
+    android:background="@color/orange">
 
     <ImageView
         android:id="@+id/food_icon"
@@ -15,17 +14,18 @@
         android:layout_height="50dp"
         android:layout_margin="10dp"
         android:importantForAccessibility="no"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:srcCompat="@android:drawable/btn_star_big_on"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@drawable/ic_baby_food" />
 
     <TextView
         android:id="@+id/food_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintStart_toEndOf="@id/food_icon"
         app:layout_constraintTop_toTopOf="@id/food_icon"
         tools:text="THIS IS A TEXT " />
@@ -34,8 +34,9 @@
         android:id="@+id/food_expiration_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
         android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintStart_toEndOf="@id/food_icon"
         app:layout_constraintTop_toBottomOf="@id/food_name"
         tools:text="DD/MM/YYYY" />
