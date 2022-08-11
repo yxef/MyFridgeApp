@@ -11,20 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myfridge.R
 import com.example.myfridge.data.Food
 
-private val iconNames = listOf<String>(
-    "ic_baby_food",
-    "ic_canned_food",
-    "ic_chicken_food",
-    "ic_crab_food",
-    "ic_fish_food",
-    "ic_fruit_orange_food",
-    "ic_ham_food",
-    "ic_jar_food",
-    "ic_soda_food",
-    "ic_vegetables_pumpkin_food",
-    "ic_wine_food"
-)
-
 private val iconDrawableId = listOf(
     R.drawable.ic_baby_food,
     R.drawable.ic_canned_food,
@@ -38,10 +24,8 @@ private val iconDrawableId = listOf(
     R.drawable.ic_wine_food
 )
 
-// Adapter che mostra [Food] data objects
+// Adapter per mostrare [Food] data objects
 class FoodItemAdapter(
-    /*private val context: Context,*/
-    // val dataset: LiveData<String>
     private val dataset: LiveData<List<Food>>
 ) : RecyclerView.Adapter<FoodItemAdapter.FoodItemViewHolder>() {
 
@@ -60,15 +44,10 @@ class FoodItemAdapter(
 
 
     /**
-     *
-     * holder.textViewFoodName.text = foodListViewModel.status.value.toString()
-     * ho provato queste, ma non funziona passare il viewmodel, devo passare i livedata
+     * Assegnamo i live data se non sono null alle nostre textview, altrimenti assegnamo
+     * il placeholder "Missing Data"
      */
     override fun onBindViewHolder(holder: FoodItemViewHolder, position: Int) {
-        Log.d("Dataset", "cum ${dataset.value}")
-        //holder.textViewFoodName.text = info.value
-
-        Log.d("Dataset", "Id Drawables: ${iconDrawableId.toString()}")
 
         holder.textViewFoodName.text = dataset.value?.get(position)?.foodName ?: "Missing data"
 

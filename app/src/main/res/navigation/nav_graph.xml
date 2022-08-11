@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/ModifyFoodFragment"
-        android:name="com.example.myfridge.ModifyFoodFragment"
+        android:name="com.example.myfridge.modifyfood.ModifyFoodFragment"
         android:label="fragment_modify_food"
         tools:layout="@layout/fragment_modify_food" >
         <action

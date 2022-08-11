@@ -21,4 +21,6 @@
     <string name="choose_expiration_date">Choose Expiration Date</string>
     <string name="choose_food_icon">Choose Food Icon</string>
     <string name="add_this_food_to_your_fridge">Add this food to your fridge!</string>
+    <string name="single_icon">Single Icon</string>
+    <string name="expiration_feedback">Selected Date: %s</string>
 </resources>

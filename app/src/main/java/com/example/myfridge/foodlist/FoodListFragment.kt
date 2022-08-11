@@ -3,8 +3,6 @@ package com.example.myfridge.foodlist
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -31,6 +29,7 @@ class FoodListFragment : Fragment() {
     //private var foodListViewModel by viewModels<FoodListViewModel > { defaultViewModelProviderFactory() }
     private var foodListViewModel: FoodListViewModel = FoodListViewModel()
 
+    // RecyclerView
     private lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(
@@ -47,6 +46,8 @@ class FoodListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = binding.recyclerView
 
+        recyclerView.adapter = FoodItemAdapter(foodListViewModel.foodList)
+
         // Creiamo un observer che quando attivato rilancia la funziona adapter e ricrea la lista
         val foodObserver = Observer<String> {
             recyclerView.adapter = FoodItemAdapter(foodListViewModel.foodList)
@@ -54,11 +55,6 @@ class FoodListFragment : Fragment() {
         // Diciamo all'observer di controllare cambiamenti alla LiveData status in modo tale che una volta
         // che il ViewModel aggiorna il dato, la recyclerView viene ricostruita
         foodListViewModel.status.observe(viewLifecycleOwner, foodObserver)
-
-        recyclerView.adapter = FoodItemAdapter(foodListViewModel.foodList)
-
-        // no idea su come non rendere le merde null nella recycler view
-        //foodListViewModel.status.observe(viewLifecycleOwner) { foodListViewModel.getFood(11) }
 
 
         binding.buttonTest.setOnClickListener {
