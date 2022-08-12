@@ -5,16 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.Toast
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myfridge.R
 
-private var selectedIconPosition = -1
-private var previousIconPosition = -1
 
 class IconItemAdapter(
     private val dataset: List<Int>
 ) : RecyclerView.Adapter<IconItemAdapter.IconViewHolder>() {
+
+    var selectedIconPosition = -1
+    private var previousIconPosition = -1
 
     class IconViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val iconImageView: ImageView = view.findViewById(R.id.icon_image)
@@ -39,17 +40,10 @@ class IconItemAdapter(
             holder.iconImageView.setBackgroundColor(it.context.getColor(R.color.davys_grey))
             notifyItemChanged(previousIconPosition)
 
-            Toast.makeText(
-                it.context,
-                "$selectedIconPosition || $previousIconPosition || $position",
-                Toast.LENGTH_SHORT
-            ).show()
-
         }
     }
 
     override fun getItemCount(): Int {
         return dataset.size
     }
-
 }
