@@ -9,7 +9,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.*
 
-private const val IP_ADDRESS = "82.53.127.43"
+private const val IP_ADDRESS = "95.250.197.19"
 private const val BASE_URL = "http://${IP_ADDRESS}:8080"
 
 // logger

@@ -16,6 +16,8 @@ import com.google.android.material.datepicker.DateValidatorPointBackward
 import com.google.android.material.datepicker.DateValidatorPointForward
 import com.google.android.material.datepicker.MaterialDatePicker
 import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 
@@ -35,6 +37,9 @@ class ModifyFoodFragment : Fragment() {
 
     // Food item that we will insert into our fridge
     private val food: Food? = null
+
+//    private val formatter =DateTimeFormatter.ofPattern("dd-MMMM-yy")
+    private val formatter = SimpleDateFormat("dd/MM/yyyy", Locale("it"))
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -79,15 +84,19 @@ class ModifyFoodFragment : Fragment() {
         materialDatePicker.addOnPositiveButtonClickListener {
             binding.textViewExpirationDateFeedback.text =
                 getString(R.string.expiration_feedback, materialDatePicker.headerText)
+
+            selectedDate = formatter.format(materialDatePicker.selection)
+            Log.d("Dataset", "$selectedDate || ${materialDatePicker.selection}")
         }
 
 
 
         binding.buttonConfirmChoice.setOnClickListener {
+
             addFoodViewModel.createFood(
                 fridgeId = 11, // Da rimpiazzare con fridgeId nel bundle
                 iconId = addFoodViewModel.selectedIconPosition,
-                expirationDate = binding.textViewExpirationDateFeedback.text.toString(),
+                expirationDate = selectedDate,
                 foodName = binding.foodNameEditText.text.toString()
             )
             Log.d("Dataset", addFoodViewModel.foodToInsert.toString())
