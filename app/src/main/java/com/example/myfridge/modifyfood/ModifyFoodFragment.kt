@@ -81,11 +81,13 @@ class ModifyFoodFragment : Fragment() {
                 getString(R.string.expiration_feedback, materialDatePicker.headerText)
         }
 
+
+
         binding.buttonConfirmChoice.setOnClickListener {
             addFoodViewModel.createFood(
                 fridgeId = 11, // Da rimpiazzare con fridgeId nel bundle
                 iconId = addFoodViewModel.selectedIconPosition,
-                expirationDate = "22-12-31",
+                expirationDate = binding.textViewExpirationDateFeedback.text.toString(),
                 foodName = binding.foodNameEditText.text.toString()
             )
             Log.d("Dataset", addFoodViewModel.foodToInsert.toString())
