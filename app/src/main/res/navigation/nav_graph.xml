@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_foodListFragment_to_shareFridgeFragment"
             app:destination="@id/shareFridgeFragment" />
+        <action
+            android:id="@+id/action_foodListFragment_to_fridgeChoiceFragment"
+            app:destination="@id/fridgeChoiceFragment" />
     </fragment>
     <fragment
         android:id="@+id/fridgeChoiceFragment"

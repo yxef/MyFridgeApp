@@ -6,7 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.OnBackPressedDispatcher
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myfridge.R
 import com.example.myfridge.data.Food
@@ -38,7 +41,7 @@ class ModifyFoodFragment : Fragment() {
     // Food item that we will insert into our fridge
     private val food: Food? = null
 
-//    private val formatter =DateTimeFormatter.ofPattern("dd-MMMM-yy")
+    //    private val formatter =DateTimeFormatter.ofPattern("dd-MMMM-yy")
     private val formatter = SimpleDateFormat("dd/MM/yyyy", Locale("it"))
 
     override fun onCreateView(
@@ -68,6 +71,13 @@ class ModifyFoodFragment : Fragment() {
 
 
         val materialDatePicker = materialDateBuilder.build() //come in fortnite poggers
+
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().navigate(action)
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(callback)
 
 
         // Shows calendar picker

@@ -2,15 +2,18 @@ package com.example.myfridge.foodlist
 
 import android.os.Bundle
 import android.view.*
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myfridge.databinding.FragmentFoodListBinding
 
 class FoodListFragment : Fragment() {
 
     private val action = FoodListFragmentDirections.actionFoodListFragmentToModifyFoodFragment()
+    private val actionBack = FoodListFragmentDirections.actionFoodListFragmentToFridgeChoiceFragment()
 
     // null perché non possiamo inflazionare il layout fino a quando non viene chiamata
     // onCreateView()
@@ -56,10 +59,16 @@ class FoodListFragment : Fragment() {
         // che il ViewModel aggiorna il dato, la recyclerView viene ricostruita
         foodListViewModel.status.observe(viewLifecycleOwner, foodObserver)
 
-
         binding.buttonTest.setOnClickListener {
             binding.buttonTest.findNavController().navigate(action)
         }
+
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().navigate(actionBack)
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(callback)
     }
 
     override fun onDestroyView() {
