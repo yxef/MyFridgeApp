@@ -1,6 +1,8 @@
 package com.example.myfridge.modifyfood
 
 
+import android.content.Context
+import android.printservice.CustomPrinterIconCallback
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,11 +13,13 @@ import com.example.myfridge.R
 
 
 class IconItemAdapter(
+    private val addFoodViewModel: AddFoodViewModel,
     private val dataset: List<Int>
 ) : RecyclerView.Adapter<IconItemAdapter.IconViewHolder>() {
 
-    var selectedIconPosition = -1
+
     private var previousIconPosition = -1
+
 
     class IconViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val iconImageView: ImageView = view.findViewById(R.id.icon_image)
@@ -34,8 +38,8 @@ class IconItemAdapter(
 
 
         holder.iconImageView.setOnClickListener {
-            previousIconPosition = selectedIconPosition
-            selectedIconPosition = holder.adapterPosition
+            previousIconPosition = addFoodViewModel.selectedIconPosition
+            addFoodViewModel.selectedIconPosition = holder.adapterPosition
 
             holder.iconImageView.setBackgroundColor(it.context.getColor(R.color.davys_grey))
             notifyItemChanged(previousIconPosition)

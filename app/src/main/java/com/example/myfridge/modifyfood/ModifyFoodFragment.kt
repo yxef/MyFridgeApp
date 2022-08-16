@@ -49,7 +49,7 @@ class ModifyFoodFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = binding.recyclerView
 
-        recyclerView.adapter = IconItemAdapter(addFoodViewModel.iconList)
+        recyclerView.adapter = IconItemAdapter(addFoodViewModel, addFoodViewModel.iconList)
 
         val constraintsBuilder =
             CalendarConstraints.Builder().setValidator(DateValidatorPointForward.now())
@@ -84,7 +84,7 @@ class ModifyFoodFragment : Fragment() {
         binding.buttonConfirmChoice.setOnClickListener {
             addFoodViewModel.createFood(
                 fridgeId = 11, // Da rimpiazzare con fridgeId nel bundle
-                iconId = 0,
+                iconId = addFoodViewModel.selectedIconPosition,
                 expirationDate = "22-12-31",
                 foodName = binding.foodNameEditText.text.toString()
             )

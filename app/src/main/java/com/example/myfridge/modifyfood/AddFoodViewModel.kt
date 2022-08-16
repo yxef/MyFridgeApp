@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 
 
 class AddFoodViewModel : ViewModel() {
-    private val _iconDrawableId = listOf(
+    val iconList = listOf(
         R.drawable.ic_baby_food,
         R.drawable.ic_canned_food,
         R.drawable.ic_chicken_food,
@@ -24,16 +24,11 @@ class AddFoodViewModel : ViewModel() {
         R.drawable.ic_vegetables_pumpkin_food,
         R.drawable.ic_wine_food
     )
-    val iconList = _iconDrawableId
 
     var foodToInsert: Food? = null
 
-    private var _selectedIconPosition = MutableLiveData<Int>()
-    val selectedIconPosition : LiveData<Int> = _selectedIconPosition
+    var selectedIconPosition : Int = -1
 
-    init {
-        _selectedIconPosition.value = -1
-    }
 
     fun createFood(
         fridgeId: Int,
@@ -61,5 +56,6 @@ class AddFoodViewModel : ViewModel() {
             }
         }
     }
+
 
 }
