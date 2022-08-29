@@ -7,20 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
-import androidx.activity.OnBackPressedDispatcher
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myfridge.R
-import com.example.myfridge.data.Food
 import com.example.myfridge.databinding.FragmentModifyFoodBinding
 import com.google.android.material.datepicker.CalendarConstraints
-import com.google.android.material.datepicker.DateValidatorPointBackward
 import com.google.android.material.datepicker.DateValidatorPointForward
 import com.google.android.material.datepicker.MaterialDatePicker
-import java.text.DateFormat
 import java.text.SimpleDateFormat
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 
@@ -37,9 +32,6 @@ class ModifyFoodFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
 
     private lateinit var selectedDate: String
-
-    // Food item that we will insert into our fridge
-    private val food: Food? = null
 
     //    private val formatter =DateTimeFormatter.ofPattern("dd-MMMM-yy")
     private val formatter = SimpleDateFormat("dd/MM/yyyy", Locale("it"))
@@ -104,7 +96,7 @@ class ModifyFoodFragment : Fragment() {
         binding.buttonConfirmChoice.setOnClickListener {
 
             addFoodViewModel.createFood(
-                fridgeId = 11, // Da rimpiazzare con fridgeId nel bundle
+                fridgeId = 11, // Da rimpiazzare con fridgeId
                 iconId = addFoodViewModel.selectedIconPosition,
                 expirationDate = selectedDate,
                 foodName = binding.foodNameEditText.text.toString()

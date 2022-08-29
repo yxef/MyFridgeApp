@@ -25,11 +25,14 @@ class ContactFragment : Fragment() {
         "jp.konami.masterduel"
     )
 
-    private val emailAddress: String = "contact@federicogalli.ovh"
+    private val emailAddress : Array<String> = arrayOf("contact@federicogalli.ovh")
+    private val subject: String = "Contact Support"
+    private val attachment = "HEEEEEEEEEEEEEEELP"
     private val intentMail = Intent(Intent.ACTION_SENDTO).apply {
-        data = Uri.parse("mailto:".plus(emailAddress))
-        putExtra(Intent.EXTRA_SUBJECT, "Contact Support")
-        putExtra(Intent.EXTRA_TEXT, "I NEED EEEEEELP")
+        data = Uri.parse("mailto:") // only email apps should handle this
+        putExtra(Intent.EXTRA_EMAIL, arrayOf("contact@federicogalli.ovh"))
+        putExtra(Intent.EXTRA_SUBJECT, subject)
+        putExtra(Intent.EXTRA_TEXT, attachment)
     }
 
     // Intent to open an app page on the Google Play Store specifically
@@ -38,7 +41,7 @@ class ContactFragment : Fragment() {
         Intent.ACTION_VIEW,
         Uri.parse(
             "market://details?id=".plus(
-                randomUris[Random(System.currentTimeMillis()).nextInt(0, randomUris.size-1)]
+                randomUris[Random(System.currentTimeMillis()).nextInt(0, randomUris.size - 1)]
             )
         )
     )

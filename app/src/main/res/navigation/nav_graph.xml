@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.myfridge.HomeFragment"
+        android:name="com.example.myfridge.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -16,9 +16,6 @@
         <action
             android:id="@+id/action_homeFragment_to_contactFragment"
             app:destination="@id/contactFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_addFridgeFragment"
-            app:destination="@id/addFridgeFragment" />
     </fragment>
     <fragment
         android:id="@+id/foodListFragment"

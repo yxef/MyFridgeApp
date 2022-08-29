@@ -1,4 +1,4 @@
-package com.example.myfridge
+package com.example.myfridge.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.myfridge.databinding.FragmentHomeBinding
-import android.provider.Settings.Secure
 
 class HomeFragment : Fragment() {
     private var _binding : FragmentHomeBinding? = null
@@ -15,7 +14,6 @@ class HomeFragment : Fragment() {
 
     private val actionToContact = HomeFragmentDirections.actionHomeFragmentToContactFragment()
     private val actionToFridgeChoice = HomeFragmentDirections.actionHomeFragmentToFridgeChoiceFragment()
-    private val actionToAddFridge = HomeFragmentDirections.actionHomeFragmentToAddFridgeFragment()
 
 
     override fun onCreateView(
@@ -36,10 +34,6 @@ class HomeFragment : Fragment() {
 
         binding.buttonToFridgeChoice.setOnClickListener{
             binding.buttonToFridgeChoice.findNavController().navigate(actionToFridgeChoice)
-        }
-
-        binding.buttonToAddFridge.setOnClickListener{
-            binding.buttonToAddFridge.findNavController().navigate(actionToAddFridge)
         }
     }
 }

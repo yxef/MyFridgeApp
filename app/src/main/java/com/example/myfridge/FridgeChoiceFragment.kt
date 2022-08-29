@@ -32,6 +32,10 @@ class FridgeChoiceFragment : Fragment() {
         binding.buttonToFoodList.setOnClickListener{
             binding.buttonToFoodList.findNavController().navigate(actionToFoodList)
         }
+
+        binding.buttonToAddFridge.setOnClickListener{
+            binding.buttonToAddFridge.findNavController().navigate(actionToAddFridge)
+        }
     }
 
 

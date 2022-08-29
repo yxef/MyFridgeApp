@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
  * [ViewModel] attached to [FoodListFragment]
  */
 class FoodListViewModel : ViewModel() {
-    private val fridgeId = 11
+    private val fridgeId = 11 // da ottenere dal fragment precedente
 
     // Stores the status of the request
     private val _status = MutableLiveData<String>()
