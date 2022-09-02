@@ -48,6 +48,11 @@ interface MyFridgeApiService {
     @POST("/fridge/add/food")
     suspend fun addFoodToFridge(@Body foodToInsert: Food)
 
+    @Headers("Content-Type: application/json")
+    @POST("/user/{userId}")
+    suspend fun createUserAPI(@Path("userId") userId : String)
+
+
 }
 
 object MyFridgeApi{

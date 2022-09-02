@@ -96,7 +96,7 @@ class ModifyFoodFragment : Fragment() {
         binding.buttonConfirmChoice.setOnClickListener {
 
             addFoodViewModel.createFood(
-                fridgeId = 11, // Da rimpiazzare con fridgeId
+                fridgeId = 1, // Da rimpiazzare con fridgeId
                 iconId = addFoodViewModel.selectedIconPosition,
                 expirationDate = selectedDate,
                 foodName = binding.foodNameEditText.text.toString()

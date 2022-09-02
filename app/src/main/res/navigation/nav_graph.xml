@@ -51,7 +51,9 @@
         tools:layout="@layout/fragment_modify_food" >
         <action
             android:id="@+id/action_modifyFoodFragment_to_foodListFragment"
-            app:destination="@id/foodListFragment" />
+            app:destination="@id/foodListFragment"
+            app:popUpTo="@id/foodListFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/contactFragment"
