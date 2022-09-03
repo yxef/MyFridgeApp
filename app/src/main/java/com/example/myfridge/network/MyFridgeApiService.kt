@@ -1,6 +1,7 @@
 package com.example.myfridge.network
 
 import com.example.myfridge.data.Food
+import com.example.myfridge.data.Fridge
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
@@ -14,11 +15,11 @@ private const val PORT = "8080"
 private const val BASE_URL = "http://${IP_ADDRESS}:${PORT}"
 
 // logger
-private val logging : HttpLoggingInterceptor = HttpLoggingInterceptor()
+private val logging: HttpLoggingInterceptor = HttpLoggingInterceptor()
     .setLevel(HttpLoggingInterceptor.Level.BODY)
 
 // client
-private val client : OkHttpClient = OkHttpClient.Builder()
+private val client: OkHttpClient = OkHttpClient.Builder()
     .addInterceptor(logging)
     .build()
 
@@ -32,17 +33,14 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 
-
 interface MyFridgeApiService {
-/*
-    @GET("/user/{userId}/Fridges")
-    fun getFridgesOfUser() : String
-
-    @GET()
-    fun getAccessOfFridge() : String*/
 
     @GET("/fridge/{fridgeId}/foods")
-    suspend fun getFoodOfFridge(@Path("fridgeId") fridgeId : Int ) : List<Food>
+    suspend fun getFoodOfFridge(@Path("fridgeId") fridgeId: Int): List<Food>
+
+    @Headers("Content-Type: application/json")
+    @GET("/user/{userId}/fridges")
+    suspend fun getFridgesOfUser(@Path("userId") userId: String): List<Fridge>
 
     @Headers("Content-Type: application/json")
     @POST("/fridge/add/food")
@@ -50,14 +48,18 @@ interface MyFridgeApiService {
 
     @Headers("Content-Type: application/json")
     @POST("/user/{userId}")
-    suspend fun createUserAPI(@Path("userId") userId : String)
+    suspend fun createUserAPI(@Path("userId") userId: String)
+
+    @Headers("Content-Type: application/json")
+    @DELETE("/user/{userId}/delete/fridge/{fridgeId}")
+    suspend fun deleteFridgeOfUser(@Path("userId") userId: String, @Path("fridgeId") fridgeId: Int)
 
 
 }
 
-object MyFridgeApi{
+object MyFridgeApi {
 
-    val retrofitService : MyFridgeApiService by lazy {
+    val retrofitService: MyFridgeApiService by lazy {
         retrofit.create(MyFridgeApiService::class.java)
     }
 }

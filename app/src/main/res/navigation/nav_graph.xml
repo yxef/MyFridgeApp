@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/fridgeChoiceFragment"
-        android:name="com.example.myfridge.FridgeChoiceFragment"
+        android:name="com.example.myfridge.fridgelist.FridgeChoiceFragment"
         android:label="fragment_fridge_choice"
         tools:layout="@layout/fragment_fridge_choice" >
         <action
@@ -43,6 +43,10 @@
         <action
             android:id="@+id/action_fridgeChoiceFragment_to_addFridgeFragment"
             app:destination="@id/addFridgeFragment" />
+        <action
+            android:id="@+id/action_fridgeChoiceFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/ModifyFoodFragment"

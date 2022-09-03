@@ -24,4 +24,5 @@
     <string name="single_icon">Single Icon</string>
     <string name="expiration_feedback">%s</string>
     <string name="selected_date">Selected Date:</string>
+    <string name="remove_fridge">remove fridge</string>
 </resources>

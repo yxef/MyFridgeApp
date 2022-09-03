@@ -13,7 +13,8 @@ import com.example.myfridge.databinding.FragmentFoodListBinding
 class FoodListFragment : Fragment() {
 
     private val action = FoodListFragmentDirections.actionFoodListFragmentToModifyFoodFragment()
-    private val actionBack = FoodListFragmentDirections.actionFoodListFragmentToFridgeChoiceFragment()
+    private val actionBack =
+        FoodListFragmentDirections.actionFoodListFragmentToFridgeChoiceFragment()
 
     // null perché non possiamo inflazionare il layout fino a quando non viene chiamata
     // onCreateView()
@@ -47,6 +48,8 @@ class FoodListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initializeDirections()
+
         recyclerView = binding.recyclerView
 
         recyclerView.adapter = FoodItemAdapter(foodListViewModel.foodList)
@@ -59,6 +62,10 @@ class FoodListFragment : Fragment() {
         // che il ViewModel aggiorna il dato, la recyclerView viene ricostruita
         foodListViewModel.status.observe(viewLifecycleOwner, foodObserver)
 
+
+    }
+
+    private fun initializeDirections(){
         binding.buttonTest.setOnClickListener {
             binding.buttonTest.findNavController().navigate(action)
         }
