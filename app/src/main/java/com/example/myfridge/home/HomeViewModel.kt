@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.myfridge.data.User
 import com.example.myfridge.network.MyFridgeApi
 import kotlinx.coroutines.launch
 
@@ -13,8 +14,6 @@ class HomeViewModel : ViewModel() {
     private var _userId = MutableLiveData<String>()
     val userId: LiveData<String> = _userId
 
-    init {
-    }
 
     fun setUserId(user: String) {
         _userId.value = user

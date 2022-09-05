@@ -3,7 +3,6 @@ package com.example.myfridge.home
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.text.method.TextKeyListener.clear
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -44,26 +43,26 @@ class HomeFragment : Fragment() {
             binding.buttonToFridgeChoice.findNavController().navigate(actionToFridgeChoice)
         }
 
-/*        sharedPreferences.edit{
-            this.clear()
-        }
-*/
-
-
         val sharedPreferences: SharedPreferences =
             requireActivity().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
         // generiamo l'user se non è -1 nelle shared preferences/datastore
 
+/*
+        sharedPreferences.edit{
+            this.clear()
+        }
+*/
+
+        // Se l'utente nelle SharedPreferenes è null allora lo generiamo e lo associamo al viewmodel
         if (sharedPreferences.getString("user", "-1").toString() == "-1") {
             sharedPreferences.edit {
                 putString("user", UUID.randomUUID().toString()).apply()
-                homeViewModel.setUserId(sharedPreferences.getString("user", "-1").toString())
-                homeViewModel.createUser()
             }
+            homeViewModel.setUserId(sharedPreferences.getString("user", "-1").toString())
+            homeViewModel.createUser()
         }
 
         Log.d("Dataset", sharedPreferences.getString("user", "-1").toString())
-        homeViewModel.setUserId(sharedPreferences.getString("user", "-1").toString())
 
     }
 }

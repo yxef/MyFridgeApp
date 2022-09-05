@@ -13,9 +13,6 @@ class FridgeChoiceViewModel : ViewModel() {
     private var _fridgeList = MutableLiveData<List<Fridge>>()
     val fridgeList: LiveData<List<Fridge>> = _fridgeList
 
-    init {
-    }
-
     fun getFridges(userId: String) {
         viewModelScope.launch {
             try {

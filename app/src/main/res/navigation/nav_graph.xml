@@ -66,7 +66,7 @@
         tools:layout="@layout/fragment_contact" />
     <fragment
         android:id="@+id/addFridgeFragment"
-        android:name="com.example.myfridge.addFridgeFragment"
+        android:name="com.example.myfridge.fridgeadd.AddFridgeFragment"
         android:label="fragment_add_fridge"
         tools:layout="@layout/fragment_add_fridge" >
         <action
