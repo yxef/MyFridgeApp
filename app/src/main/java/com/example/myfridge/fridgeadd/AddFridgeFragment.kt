@@ -7,18 +7,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.myfridge.databinding.FragmentAddFridgeBinding
 import com.example.myfridge.foodlist.FoodListFragmentArgs
 
 class AddFridgeFragment : Fragment() {
-    private var _binding : FragmentAddFridgeBinding? = null
+    private var _binding: FragmentAddFridgeBinding? = null
     private val binding get() = _binding!!
 
-    private val actionToFridgeChoice = AddFridgeFragmentDirections.actionAddFridgeFragmentToFridgeChoiceFragment()
+    private val actionToFridgeChoice =
+        AddFridgeFragmentDirections.actionAddFridgeFragmentToFridgeChoiceFragment()
 
-    private  var addFridgeViewModel : AddFridgeViewModel = AddFridgeViewModel()
+    private var addFridgeViewModel: AddFridgeViewModel = AddFridgeViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,14 +33,25 @@ class AddFridgeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initializeDirections()
 
-        binding.addFridgeButton.setOnClickListener{
+        binding.addFridgeButton.setOnClickListener {
             insertFridgeToDatabase(binding.insertFridgeNameEditText.text.toString())
         }
     }
 
+    private fun initializeDirections(){
+
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().navigate(actionToFridgeChoice)
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(callback)
+    }
+
     // Invece di inserire nel DB devo prendere le info dal database
-    private fun insertFridgeToDatabase(fridgeName : String) {
+    private fun insertFridgeToDatabase(fridgeName: String) {
         val sharedPreferences: SharedPreferences =
             requireActivity().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
 
@@ -49,7 +62,7 @@ class AddFridgeFragment : Fragment() {
         moveToFridgeChoice()
     }
 
-    private fun moveToFridgeChoice(){
+    private fun moveToFridgeChoice() {
         findNavController().navigate(actionToFridgeChoice)
     }
 }

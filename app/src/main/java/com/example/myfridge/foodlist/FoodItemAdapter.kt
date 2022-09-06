@@ -59,7 +59,7 @@ class FoodItemAdapter(
             dataset.value?.get(position)?.expirationDate ?: "Missing Data"
 
         holder.imageViewIconImageView.setImageResource(
-            iconDrawableId[dataset.value?.get(position)?.iconId ?: 0]
+            iconDrawableId[dataset.value?.get(position)?.iconId ?: 1]
         )
 
         holder.removeFoodButton.setOnClickListener{

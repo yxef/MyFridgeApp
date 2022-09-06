@@ -25,7 +25,7 @@ class AddFoodViewModel : ViewModel() {
 
     var foodToInsert: Food? = null
 
-    var selectedIconPosition : Int = -1
+    var selectedIconPosition : Int = 1
 
 
     fun createFood(

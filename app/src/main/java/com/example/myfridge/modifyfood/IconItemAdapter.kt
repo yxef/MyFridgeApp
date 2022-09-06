@@ -32,14 +32,11 @@ class IconItemAdapter(
         holder.iconImageView.setImageResource(dataset[position])
         holder.iconImageView.setBackgroundColor(holder.iconImageView.context.getColor(R.color.white))
 
-
         holder.iconImageView.setOnClickListener {
             previousIconPosition = addFoodViewModel.selectedIconPosition
             addFoodViewModel.selectedIconPosition = holder.adapterPosition
-
-            holder.iconImageView.setBackgroundColor(it.context.getColor(R.color.davys_grey))
             notifyItemChanged(previousIconPosition)
-
+            holder.iconImageView.setBackgroundColor(it.context.getColor(R.color.davys_grey))
         }
     }
 

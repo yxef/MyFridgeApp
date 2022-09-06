@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -95,10 +96,18 @@ class ModifyFoodFragment : Fragment() {
             Log.d("Dataset", "$selectedDate || ${materialDatePicker.selection}")
         }
 
-
-
         binding.buttonConfirmChoice.setOnClickListener {
+            if (!createFood()) {
+                Toast.makeText(this.context,"Missing Data", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            addFoodViewModel.pushFoodToDatabase()
+            binding.buttonConfirmChoice.findNavController().navigate(action)
+        }
+    }
 
+    private fun createFood(): Boolean {
+        try {
             addFoodViewModel.createFood(
                 fridgeId = args.fridgeId, // Da rimpiazzare con fridgeId
                 iconId = addFoodViewModel.selectedIconPosition,
@@ -106,8 +115,10 @@ class ModifyFoodFragment : Fragment() {
                 foodName = binding.foodNameEditText.text.toString()
             )
             Log.d("Dataset", addFoodViewModel.foodToInsert.toString())
-            addFoodViewModel.pushFoodToDatabase()
-            binding.buttonConfirmChoice.findNavController().navigate(action)
+            return true
+        } catch (e: Exception) {
+            Log.d("Dataset", "${e.message}")
         }
+        return false
     }
 }
