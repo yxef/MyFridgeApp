@@ -42,4 +42,16 @@ class FoodListViewModel : ViewModel() {
             }
         }
     }
+
+    fun deleteFood(fridgeId: Int, foodId: Int){
+        viewModelScope.launch {
+            try {
+                MyFridgeApi.retrofitService.deleteFoodOfUser(fridgeId, foodId)
+                _status.value = "Successful Delete"
+                getFood(fridgeId)
+            }catch (e:Exception){
+                Log.d("Dataset", "Failure: ${e.message}")
+            }
+        }
+    }
 }

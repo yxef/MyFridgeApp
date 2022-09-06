@@ -60,6 +60,10 @@ interface MyFridgeApiService {
     @DELETE("/user/{userId}/delete/fridge/{fridgeId}")
     suspend fun deleteFridgeOfUser(@Path("userId") userId: String, @Path("fridgeId") fridgeId: Int)
 
+    @Headers("Content-Type: application/json")
+    @DELETE("/fridge/{fridgeId}/delete/food/{foodId}")
+    suspend fun deleteFoodOfUser(@Path("fridgeId") fridgeId: Int, @Path("foodId") foodId : Int)
+
 }
 
 object MyFridgeApi {

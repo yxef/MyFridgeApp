@@ -61,12 +61,7 @@ class FridgeChoiceFragment : Fragment() {
 
 
         val fridgeObserver = Observer<List<Fridge>> {
-            recyclerView.adapter =
-                FridgeChoiceAdapter(
-                    fridgeChoiceViewModel.fridgeList,
-                    { deleteFridgeOfUser(it) },
-                    { moveToFoodList(it) }
-                )
+            recyclerView.adapter?.notifyDataSetChanged()
         }
 
 
@@ -105,7 +100,6 @@ class FridgeChoiceFragment : Fragment() {
             sharedPreferences.getString("user", "-1").toString(),
             fridgeId
         )
-
     }
 
 

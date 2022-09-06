@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myfridge.databinding.FragmentFoodListBinding
+import okhttp3.internal.notify
 
 class FoodListFragment : Fragment() {
 
@@ -55,11 +56,13 @@ class FoodListFragment : Fragment() {
 
         recyclerView = binding.recyclerView
 
-        recyclerView.adapter = FoodItemAdapter(foodListViewModel.foodList)
+        recyclerView.adapter =
+            FoodItemAdapter(foodListViewModel.foodList) { deleteFridgeOfUser(it) }
 
         // Creiamo un observer che quando attivato rilancia la funziona adapter e ricrea la lista
         val foodObserver = Observer<String> {
-            recyclerView.adapter = FoodItemAdapter(foodListViewModel.foodList)
+            recyclerView.adapter =
+                FoodItemAdapter(foodListViewModel.foodList) { deleteFridgeOfUser(it) }
         }
         // Diciamo all'observer di controllare cambiamenti alla LiveData status in modo tale che una volta
         // che il ViewModel aggiorna il dato, la recyclerView viene ricostruita
@@ -84,6 +87,12 @@ class FoodListFragment : Fragment() {
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(callback)
+    }
+
+    private fun deleteFridgeOfUser(foodId: Int) {
+        Log.d("Dataset", "foodId: $foodId")
+        Log.d("Dataset", "fridgeId: ${args.fridgeId}")
+        foodListViewModel.deleteFood(args.fridgeId, foodId)
     }
 
     override fun onDestroyView() {
