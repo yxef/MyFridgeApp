@@ -16,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myfridge.data.Fridge
 import com.example.myfridge.databinding.FragmentFridgeChoiceBinding
+import okhttp3.internal.notify
 
 
 class FridgeChoiceFragment : Fragment() {
@@ -23,8 +24,7 @@ class FridgeChoiceFragment : Fragment() {
     private var _binding: FragmentFridgeChoiceBinding? = null
     private val binding get() = _binding!!
 
-    private val actionToFoodList =
-        FridgeChoiceFragmentDirections.actionFridgeChoiceFragmentToFoodListFragment()
+
     private val actionToAddFridge =
         FridgeChoiceFragmentDirections.actionFridgeChoiceFragmentToAddFridgeFragment()
     private val actionBack =
@@ -53,18 +53,27 @@ class FridgeChoiceFragment : Fragment() {
 
         recyclerView = binding.recyclerView
         recyclerView.adapter =
-            FridgeChoiceAdapter(fridgeChoiceViewModel.fridgeList) { deleteFridgeOfUser(it) }
+            FridgeChoiceAdapter(
+                fridgeChoiceViewModel.fridgeList,
+                { deleteFridgeOfUser(it) },
+                { moveToFoodList(it) }
+            )
+
 
         val fridgeObserver = Observer<List<Fridge>> {
             recyclerView.adapter =
-                FridgeChoiceAdapter(fridgeChoiceViewModel.fridgeList) { deleteFridgeOfUser(it) }
+                FridgeChoiceAdapter(
+                    fridgeChoiceViewModel.fridgeList,
+                    { deleteFridgeOfUser(it) },
+                    { moveToFoodList(it) }
+                )
         }
+
 
         fridgeChoiceViewModel.fridgeList.observe(viewLifecycleOwner, fridgeObserver)
         fridgeChoiceViewModel.getFridges(sharedPreferences.getString("user", "-1").toString())
 
     }
-
 
     private fun initializeDirections() {
         // Fragment Movement
@@ -79,6 +88,13 @@ class FridgeChoiceFragment : Fragment() {
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(callback)
+    }
+
+    private fun moveToFoodList(fridgeId: Int) {
+        val actionToFoodList =
+            FridgeChoiceFragmentDirections.actionFridgeChoiceFragmentToFoodListFragment(fridgeId)
+
+        findNavController().navigate(actionToFoodList)
     }
 
     private fun deleteFridgeOfUser(fridgeId: Int) {

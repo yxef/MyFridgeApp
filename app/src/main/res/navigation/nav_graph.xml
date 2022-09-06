@@ -31,6 +31,10 @@
         <action
             android:id="@+id/action_foodListFragment_to_fridgeChoiceFragment"
             app:destination="@id/fridgeChoiceFragment" />
+        <argument
+            android:name="fridgeId"
+            app:argType="integer"
+            android:defaultValue="-1" />
     </fragment>
     <fragment
         android:id="@+id/fridgeChoiceFragment"
@@ -58,6 +62,10 @@
             app:destination="@id/foodListFragment"
             app:popUpTo="@id/foodListFragment"
             app:popUpToInclusive="true" />
+        <argument
+            android:name="fridgeId"
+            app:argType="integer"
+            android:defaultValue="-1" />
     </fragment>
     <fragment
         android:id="@+id/contactFragment"

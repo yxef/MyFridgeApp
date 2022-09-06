@@ -1,18 +1,21 @@
 package com.example.myfridge.foodlist
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myfridge.databinding.FragmentFoodListBinding
 
 class FoodListFragment : Fragment() {
 
-    private val action = FoodListFragmentDirections.actionFoodListFragmentToModifyFoodFragment()
+    private val args: FoodListFragmentArgs by navArgs()
+
     private val actionBack =
         FoodListFragmentDirections.actionFoodListFragmentToFridgeChoiceFragment()
 
@@ -61,11 +64,16 @@ class FoodListFragment : Fragment() {
         // Diciamo all'observer di controllare cambiamenti alla LiveData status in modo tale che una volta
         // che il ViewModel aggiorna il dato, la recyclerView viene ricostruita
         foodListViewModel.status.observe(viewLifecycleOwner, foodObserver)
+        Log.d("Dataset", "FridgeID: ${args.fridgeId}")
+        foodListViewModel.getFood(args.fridgeId)
 
 
     }
 
-    private fun initializeDirections(){
+    private fun initializeDirections() {
+        val action =
+            FoodListFragmentDirections.actionFoodListFragmentToModifyFoodFragment(args.fridgeId)
+
         binding.buttonTest.setOnClickListener {
             binding.buttonTest.findNavController().navigate(action)
         }

@@ -13,7 +13,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class FridgeChoiceAdapter(
     private val dataset: LiveData<List<Fridge>>,
-    private val clickListener : (Int) -> Unit
+    private val clickListener : (Int) -> Unit,
+    private val moveListener : (Int) -> Unit
 ) : RecyclerView.Adapter<FridgeChoiceAdapter.FridgeItemViewHolder>() {
 
     class FridgeItemViewHolder(view: View):
@@ -40,9 +41,11 @@ class FridgeChoiceAdapter(
         holder.removeFridgeButton.setOnClickListener {
             // passiamo il corrente fridgeId
             clickListener(dataset.value?.get(position)?.id ?: -1)
-
         }
 
+        holder.itemView.setOnClickListener{
+            moveListener(dataset.value?.get(position)?.id ?: -1)
+        }
     }
 
     override fun getItemCount(): Int {

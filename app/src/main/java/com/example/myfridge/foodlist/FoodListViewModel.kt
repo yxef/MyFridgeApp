@@ -13,7 +13,6 @@ import kotlinx.coroutines.launch
  * [ViewModel] attached to [FoodListFragment]
  */
 class FoodListViewModel : ViewModel() {
-    private val fridgeId = 1 // da ottenere dal fragment precedente
 
     // Stores the status of the request
     private val _status = MutableLiveData<String>()
@@ -28,16 +27,9 @@ class FoodListViewModel : ViewModel() {
     val foodList : LiveData<List<Food>> = _foodList
 
     /**
-     * Calls getFood on init so we can display food immediately
-     */
-    init {
-        getFood(fridgeId)
-    }
-
-    /**
      * By using the fridge ID, it gets every single food item in fridge
      */
-    private fun getFood(fridgeId: Int) {
+    fun getFood(fridgeId: Int) {
 
         viewModelScope.launch {
             try {

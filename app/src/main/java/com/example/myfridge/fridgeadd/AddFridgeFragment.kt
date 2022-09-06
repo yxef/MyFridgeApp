@@ -8,7 +8,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.myfridge.databinding.FragmentAddFridgeBinding
+import com.example.myfridge.foodlist.FoodListFragmentArgs
 
 class AddFridgeFragment : Fragment() {
     private var _binding : FragmentAddFridgeBinding? = null

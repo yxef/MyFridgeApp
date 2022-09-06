@@ -9,9 +9,11 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myfridge.R
 import com.example.myfridge.databinding.FragmentModifyFoodBinding
+import com.example.myfridge.foodlist.FoodListFragmentArgs
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointForward
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -21,8 +23,7 @@ import java.util.*
 
 class ModifyFoodFragment : Fragment() {
 
-    private val action = ModifyFoodFragmentDirections.actionModifyFoodFragmentToFoodListFragment()
-
+    private val args: FoodListFragmentArgs by navArgs()
 
     private var _binding: FragmentModifyFoodBinding? = null
     private val binding get() = _binding!!
@@ -63,8 +64,11 @@ class ModifyFoodFragment : Fragment() {
 
 
         val materialDatePicker = materialDateBuilder.build() //come in fortnite poggers
+        val action =
+            ModifyFoodFragmentDirections.actionModifyFoodFragmentToFoodListFragment(args.fridgeId)
 
         val callback = object : OnBackPressedCallback(true) {
+
             override fun handleOnBackPressed() {
                 findNavController().navigate(action)
             }
@@ -96,7 +100,7 @@ class ModifyFoodFragment : Fragment() {
         binding.buttonConfirmChoice.setOnClickListener {
 
             addFoodViewModel.createFood(
-                fridgeId = 1, // Da rimpiazzare con fridgeId
+                fridgeId = args.fridgeId, // Da rimpiazzare con fridgeId
                 iconId = addFoodViewModel.selectedIconPosition,
                 expirationDate = selectedDate,
                 foodName = binding.foodNameEditText.text.toString()
