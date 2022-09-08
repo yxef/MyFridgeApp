@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.myfridge.databinding.FragmentContactBinding
 import kotlin.random.Random
 
@@ -14,6 +16,8 @@ class ContactFragment : Fragment() {
 
     private var _binding: FragmentContactBinding? = null
     private val binding get() = _binding!!
+
+    private val action = ContactFragmentDirections.actionContactFragmentToHomeFragment()
 
     private val randomUris: List<String> = listOf(
         "com.mojang.minecraftpe",
@@ -25,7 +29,6 @@ class ContactFragment : Fragment() {
         "jp.konami.masterduel"
     )
 
-    private val emailAddress : Array<String> = arrayOf("contact@federicogalli.ovh")
     private val subject: String = "Contact Support"
     private val attachment = "HEEEEEEEEEEEEEEELP"
     private val intentMail = Intent(Intent.ACTION_SENDTO).apply {
@@ -64,5 +67,12 @@ class ContactFragment : Fragment() {
         binding.buttonStoreReview.setOnClickListener {
             startActivity(intentStore)
         }
+
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().navigate(action)
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(callback)
     }
 }

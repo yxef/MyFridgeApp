@@ -38,20 +38,7 @@ class HomeFragment : Fragment() {
         val sharedPreferences: SharedPreferences =
             requireActivity().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
 
-
-        binding.buttonToContacts.setOnClickListener {
-            binding.buttonToContacts.findNavController().navigate(actionToContact)
-        }
-
-        binding.baseScreen.setOnClickListener {
-            binding.baseScreen.findNavController().navigate(actionToFridgeChoice)
-        }
-
-        binding.buttonResetUser.setOnClickListener{
-            sharedPreferences.edit{
-                this.clear()
-            }
-        }
+        initializeNavigation(sharedPreferences)
 
 
         // generiamo l'user se non è -1 nelle shared preferences/datastore
@@ -66,5 +53,22 @@ class HomeFragment : Fragment() {
 
         Log.d("Dataset", sharedPreferences.getString("user", "-1").toString())
 
+    }
+
+    private fun initializeNavigation(sharedPreferences: SharedPreferences) {
+
+        binding.buttonToContacts.setOnClickListener {
+            binding.buttonToContacts.findNavController().navigate(actionToContact)
+        }
+
+        binding.baseScreen.setOnClickListener {
+            binding.baseScreen.findNavController().navigate(actionToFridgeChoice)
+        }
+
+        binding.buttonResetUser.setOnClickListener{
+            sharedPreferences.edit{
+                this.clear()
+            }
+        }
     }
 }
