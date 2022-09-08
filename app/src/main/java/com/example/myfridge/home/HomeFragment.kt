@@ -35,6 +35,10 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val sharedPreferences: SharedPreferences =
+            requireActivity().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+
+
         binding.buttonToContacts.setOnClickListener {
             binding.buttonToContacts.findNavController().navigate(actionToContact)
         }
@@ -43,16 +47,14 @@ class HomeFragment : Fragment() {
             binding.buttonToFridgeChoice.findNavController().navigate(actionToFridgeChoice)
         }
 
-        val sharedPreferences: SharedPreferences =
-            requireActivity().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
-        // generiamo l'user se non è -1 nelle shared preferences/datastore
-
-/*
-        sharedPreferences.edit{
-            this.clear()
+        binding.buttonResetUser.setOnClickListener{
+            sharedPreferences.edit{
+                this.clear()
+            }
         }
-*/
 
+
+        // generiamo l'user se non è -1 nelle shared preferences/datastore
         // Se l'utente nelle SharedPreferenes è null allora lo generiamo e lo associamo al viewmodel
         if (sharedPreferences.getString("user", "-1").toString() == "-1") {
             sharedPreferences.edit {

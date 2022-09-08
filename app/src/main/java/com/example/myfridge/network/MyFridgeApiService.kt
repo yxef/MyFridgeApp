@@ -12,8 +12,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.*
 
-private const val IP_ADDRESS = "79.55.187.52"
-private const val PORT = "8080"
+private const val IP_ADDRESS = "myfridge.quarzo.top"
+private const val PORT = "8122"
 private const val BASE_URL = "http://${IP_ADDRESS}:${PORT}"
 
 // logger
