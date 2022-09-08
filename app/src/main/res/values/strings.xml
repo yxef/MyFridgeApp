@@ -27,4 +27,5 @@
     <string name="remove_fridge">remove fridge</string>
     <string name="remove_food">Remove Food</string>
     <string name="delete_user">DELETE USER</string>
+    <string name="background_hills">Background Hills</string>
 </resources>

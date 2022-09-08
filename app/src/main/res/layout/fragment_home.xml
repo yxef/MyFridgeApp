@@ -2,9 +2,32 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/base_screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".home.HomeFragment">
+
+    <ImageView
+        android:id="@+id/image_view_hills"
+        android:layout_width="380dp"
+        android:layout_height="490dp"
+        android:contentDescription="@string/background_hills"
+        app:layout_constraintBottom_toTopOf="@id/button_to_fridge_choice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/welcomeTextView"
+        app:srcCompat="@drawable/ic_hills_svgrepo_com" />
+
+    <ImageView
+        android:id="@+id/image_view_fridge"
+        android:layout_width="263dp"
+        android:layout_height="328dp"
+        android:contentDescription="@string/background_hills"
+        app:layout_constraintBottom_toTopOf="@id/button_to_fridge_choice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/welcomeTextView"
+        app:srcCompat="@drawable/ic_electronic_fridge_svgrepo_com" />
 
     <TextView
         android:id="@+id/welcomeTextView"
@@ -21,12 +44,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <Button
         android:id="@+id/button_reset_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text = "@string/delete_user"
+        android:text="@string/delete_user"
         app:layout_constraintBottom_toTopOf="@id/button_to_contacts"
         app:layout_constraintEnd_toEndOf="parent" />
 
