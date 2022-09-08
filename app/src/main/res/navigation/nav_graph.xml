@@ -26,15 +26,16 @@
             android:id="@+id/action_foodListFragment_to_modifyFoodFragment"
             app:destination="@id/ModifyFoodFragment" />
         <action
-            android:id="@+id/action_foodListFragment_to_shareFridgeFragment"
-            app:destination="@id/shareFridgeFragment" />
-        <action
             android:id="@+id/action_foodListFragment_to_fridgeChoiceFragment"
             app:destination="@id/fridgeChoiceFragment" />
         <argument
             android:name="fridgeId"
             app:argType="integer"
             android:defaultValue="-1" />
+        <argument
+            android:name="fridgeName"
+            app:argType="string"
+            android:defaultValue='"Missing Name"' />
     </fragment>
     <fragment
         android:id="@+id/fridgeChoiceFragment"
@@ -85,9 +86,4 @@
             android:id="@+id/action_addFridgeFragment_to_fridgeChoiceFragment"
             app:destination="@id/fridgeChoiceFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/shareFridgeFragment"
-        android:name="com.example.myfridge.shareFridgeFragment"
-        android:label="fragment_share_fridge"
-        tools:layout="@layout/fragment_share_fridge" />
 </navigation>

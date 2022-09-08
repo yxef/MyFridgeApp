@@ -3,20 +3,17 @@ package com.example.myfridge.fridgelist
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myfridge.data.Fridge
 import com.example.myfridge.databinding.FragmentFridgeChoiceBinding
-import okhttp3.internal.notify
 
 
 class FridgeChoiceFragment : Fragment() {
@@ -41,6 +38,7 @@ class FridgeChoiceFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentFridgeChoiceBinding.inflate(inflater, container, false)
+        activity?.title = "Choose your Fridge or Add a new one"
         return binding.root
     }
 

@@ -46,6 +46,7 @@ class FoodListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentFoodListBinding.inflate(inflater)
+        activity?.title = "This is your food!"
 
         return binding.root
     }

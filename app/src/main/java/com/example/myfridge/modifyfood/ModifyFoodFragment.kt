@@ -44,6 +44,7 @@ class ModifyFoodFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentModifyFoodBinding.inflate(inflater)
+        activity?.title = "Add a new food to your Fridge!"
         return binding.root
     }
 
@@ -98,7 +99,7 @@ class ModifyFoodFragment : Fragment() {
 
         binding.buttonConfirmChoice.setOnClickListener {
             if (!createFood()) {
-                Toast.makeText(this.context,"Missing Data", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this.context,"Missing Date", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             addFoodViewModel.pushFoodToDatabase()

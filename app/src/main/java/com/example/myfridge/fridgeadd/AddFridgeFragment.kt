@@ -28,6 +28,7 @@ class AddFridgeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAddFridgeBinding.inflate(inflater, container, false)
+        activity?.title = "Add a new Fridge"
         return binding.root
     }
 

@@ -29,6 +29,8 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        activity?.title = "MyFridge"
+
         return binding.root
     }
 
@@ -38,7 +40,8 @@ class HomeFragment : Fragment() {
         val sharedPreferences: SharedPreferences =
             requireActivity().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
 
-        initializeNavigation(sharedPreferences)
+        initializeNavigation()
+
 
 
         // generiamo l'user se non è -1 nelle shared preferences/datastore
@@ -55,7 +58,7 @@ class HomeFragment : Fragment() {
 
     }
 
-    private fun initializeNavigation(sharedPreferences: SharedPreferences) {
+    private fun initializeNavigation() {
 
         binding.buttonToContacts.setOnClickListener {
             binding.buttonToContacts.findNavController().navigate(actionToContact)
@@ -65,10 +68,12 @@ class HomeFragment : Fragment() {
             binding.baseScreen.findNavController().navigate(actionToFridgeChoice)
         }
 
+/*
         binding.buttonResetUser.setOnClickListener{
             sharedPreferences.edit{
                 this.clear()
             }
         }
+*/
     }
 }
