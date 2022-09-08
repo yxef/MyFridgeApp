@@ -43,8 +43,8 @@ class HomeFragment : Fragment() {
             binding.buttonToContacts.findNavController().navigate(actionToContact)
         }
 
-        binding.buttonToFridgeChoice.setOnClickListener {
-            binding.buttonToFridgeChoice.findNavController().navigate(actionToFridgeChoice)
+        binding.baseScreen.setOnClickListener {
+            binding.baseScreen.findNavController().navigate(actionToFridgeChoice)
         }
 
         binding.buttonResetUser.setOnClickListener{
