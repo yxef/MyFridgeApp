@@ -16,14 +16,13 @@ class FoodListViewModel : ViewModel() {
 
     // Stores the status of the request
     private val _status = MutableLiveData<String>()
-
     // External livedata for the request status
     val status: LiveData<String> = _status
 
     // Private mutabale Food list
     private val _foodList = MutableLiveData<List<Food>>()
 
-    // Public Food list retrieved with API
+    // Public Food list retrieved with API for external access
     val foodList : LiveData<List<Food>> = _foodList
 
     /**

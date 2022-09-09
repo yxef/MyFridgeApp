@@ -14,7 +14,6 @@ class HomeViewModel : ViewModel() {
     private var _userId = MutableLiveData<String>()
     val userId: LiveData<String> = _userId
 
-
     fun setUserId(user: String) {
         _userId.value = user
     }

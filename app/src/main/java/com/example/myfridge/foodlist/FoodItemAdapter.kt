@@ -13,6 +13,7 @@ import com.example.myfridge.R
 import com.example.myfridge.data.Food
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
+// Icon ID List
 private val iconDrawableId = listOf(
     R.drawable.ic_baby_food,
     R.drawable.ic_canned_food,
@@ -26,7 +27,9 @@ private val iconDrawableId = listOf(
     R.drawable.ic_wine_food
 )
 
-// Adapter per mostrare [Food] data objects
+// Adapter to show [Food] data objects
+// Adapter binds dataset to view within a RecyclerView
+// Data binding: Binds UI components to Data Sources
 class FoodItemAdapter(
     private val dataset: LiveData<List<Food>>,
     private val clickListener: (Int) -> Unit
@@ -46,10 +49,8 @@ class FoodItemAdapter(
         return FoodItemViewHolder(adapterLayout)
     }
 
-
     /**
-     * Assegnamo i live data se non sono null alle nostre textview, altrimenti assegnamo
-     * il placeholder "Missing Data"
+     * Assign live data unless they are null, otherwise we assign "Missing Data" placeholder
      */
     override fun onBindViewHolder(holder: FoodItemViewHolder, position: Int) {
 
@@ -68,8 +69,6 @@ class FoodItemAdapter(
 
     }
 
-    override fun getItemCount(): Int {
-        // If our dataset has been initialized then we return size otherwise 0
-        return dataset.value?.size ?: 0
-    }
+    // If our dataset has been initialized then we return size otherwise 0
+    override fun getItemCount(): Int { return dataset.value?.size ?: 0 }
 }
