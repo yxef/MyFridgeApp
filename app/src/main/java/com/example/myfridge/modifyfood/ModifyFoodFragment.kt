@@ -44,7 +44,7 @@ class ModifyFoodFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentModifyFoodBinding.inflate(inflater)
-        activity?.title = "Add a new food to your Fridge!"
+        activity?.title = "Add new food to ${args.fridgeName}"
         return binding.root
     }
 
@@ -67,7 +67,7 @@ class ModifyFoodFragment : Fragment() {
 
         val materialDatePicker = materialDateBuilder.build() //come in fortnite poggers
         val action =
-            ModifyFoodFragmentDirections.actionModifyFoodFragmentToFoodListFragment(args.fridgeId)
+            ModifyFoodFragmentDirections.actionModifyFoodFragmentToFoodListFragment(args.fridgeName, args.fridgeId)
 
         val callback = object : OnBackPressedCallback(true) {
 

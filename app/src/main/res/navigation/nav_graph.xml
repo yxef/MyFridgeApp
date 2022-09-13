@@ -34,8 +34,7 @@
             android:defaultValue="-1" />
         <argument
             android:name="fridgeName"
-            app:argType="string"
-            android:defaultValue='"Missing Name"' />
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/fridgeChoiceFragment"
@@ -67,6 +66,9 @@
             android:name="fridgeId"
             app:argType="integer"
             android:defaultValue="-1" />
+        <argument
+            android:name="fridgeName"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/contactFragment"

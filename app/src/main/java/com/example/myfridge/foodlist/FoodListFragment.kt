@@ -12,7 +12,6 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myfridge.data.Food
 import com.example.myfridge.databinding.FragmentFoodListBinding
-import okhttp3.internal.notify
 
 class FoodListFragment : Fragment() {
 
@@ -47,7 +46,7 @@ class FoodListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentFoodListBinding.inflate(inflater)
-        activity?.title = "This is your food!"
+        activity?.title = args.fridgeName
 
         return binding.root
     }
@@ -76,7 +75,7 @@ class FoodListFragment : Fragment() {
 
     private fun initializeDirections() {
         val action =
-            FoodListFragmentDirections.actionFoodListFragmentToModifyFoodFragment(args.fridgeId)
+            FoodListFragmentDirections.actionFoodListFragmentToModifyFoodFragment(args.fridgeName, args.fridgeId)
 
         binding.buttonTest.setOnClickListener {
             binding.buttonTest.findNavController().navigate(action)

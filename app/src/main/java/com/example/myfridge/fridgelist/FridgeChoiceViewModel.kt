@@ -34,4 +34,5 @@ class FridgeChoiceViewModel : ViewModel() {
             }
         }
     }
+
 }

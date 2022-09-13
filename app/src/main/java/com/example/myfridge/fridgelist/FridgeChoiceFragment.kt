@@ -49,13 +49,24 @@ class FridgeChoiceFragment : Fragment() {
         val sharedPreferences: SharedPreferences =
             requireActivity().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
 
+        val moveToFoodList: (Int, String) -> Unit =
+            { fridgeId: Int, fridgeName: String ->
+                findNavController().navigate(
+                    FridgeChoiceFragmentDirections.actionFridgeChoiceFragmentToFoodListFragment(
+                        fridgeName,
+                        fridgeId
+                    )
+                )
+            }
+
         recyclerView = binding.recyclerView
         recyclerView.adapter =
             FridgeChoiceAdapter(
                 fridgeChoiceViewModel.fridgeList,
                 { deleteFridgeOfUser(it) },
-                { moveToFoodList(it) }
+                moveToFoodList
             )
+
 
 
         val fridgeObserver = Observer<List<Fridge>> {
@@ -63,7 +74,7 @@ class FridgeChoiceFragment : Fragment() {
                 FridgeChoiceAdapter(
                     fridgeChoiceViewModel.fridgeList,
                     { deleteFridgeOfUser(it) },
-                    { moveToFoodList(it) }
+                    moveToFoodList
                 )
         }
 
@@ -86,13 +97,6 @@ class FridgeChoiceFragment : Fragment() {
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(callback)
-    }
-
-    private fun moveToFoodList(fridgeId: Int) {
-        val actionToFoodList =
-            FridgeChoiceFragmentDirections.actionFridgeChoiceFragmentToFoodListFragment(fridgeId)
-
-        findNavController().navigate(actionToFoodList)
     }
 
     private fun deleteFridgeOfUser(fridgeId: Int) {
